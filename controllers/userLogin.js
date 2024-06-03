@@ -19,7 +19,7 @@ const loginUser = async (req, res) => {
     }
     let token = jwt.sign({ nombre: user.nombre }, secret, { expiresIn: 60 * 60 })
     req.session.authorization = { token, nombre };
-    res.status(200).send(token);
+    res.status(200).json({ token: token });
 
   } catch (error) {
     return res.status(500).json({ error: "Autenticacion Fallo" })
