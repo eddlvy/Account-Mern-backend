@@ -5,11 +5,16 @@ const GastosSchema = new mongoose.Schema({
     type: String,
     require: true
   },
-  casa: { type: Number },
-  gasolina: [Number],
+  renta: { type: Number },
+  gasolina: {
+    concepto: [String],
+    cantidad: { Number }
+  },
   deuda: { type: Number },
-  prestamos: [Number],
-  comida: [Number],
+  comida: {
+    concepto: [String],
+    cantidad: { Number }
+  },
   cuba: { type: Number },
   electricidad: { type: Number },
   agua: { type: Number },
@@ -18,10 +23,18 @@ const GastosSchema = new mongoose.Schema({
   telefonos: { type: Number },
   internet: { type: Number },
   bituachleumiedua: { type: Number },
-  medicinas: [Number],
-  seguromedico: { type: Number },
-  tarjetas: [Number],
-  otros: [Number],
+  salud: {
+    concepto: [String],
+    cantidad: { Number }
+  },
+  tarjetas: {
+    concepto: [String],
+    cantidad: { Number }
+  },
+  otros: {
+    concepto: [String],
+    cantidad: { Number }
+  },
 });
 
 

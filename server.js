@@ -9,6 +9,7 @@ const ingresosUpdate = require('./controllers/ingresos');
 const updateGasto = require('./controllers/gastos');
 const registerRouter = require('./routes/registerRoute');
 const loginRouter = require('./routes/loginRoute');
+const MesModel = require('./models/mesModel');
 
 
 
@@ -44,9 +45,16 @@ app.use('/user', function auth(req, res, next) {
   }
 })
 
-app.get('/', (req, res) => {
-  res.json({ message: "Hello from server" })
+app.get('/', async (req, res) => {
+  try {
+    const mes = await MesModel.find();
+    res.send(mes)
+  } catch (error) {
+    res.status(500).json({ error: "Error" })
+  }
 });
+
+
 
 
 
