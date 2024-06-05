@@ -18,8 +18,7 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: "EL nombre de usuario o la clave son incorrectos" })
     }
     let token = jwt.sign({ nombre: user.nombre }, secret, { expiresIn: 60 * 60 })
-    req.session.authorization = { token, nombre };
-    res.status(200).json({ token: token });
+    res.status(200).send({ token });
 
   } catch (error) {
     return res.status(500).json({ error: "Autenticacion Fallo" })
