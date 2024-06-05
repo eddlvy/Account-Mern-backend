@@ -3,13 +3,14 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const connectToDb = require('./config/db');
-const ingresosUpdate = require('./controllers/ingresos');
 const updateGasto = require('./controllers/gastos');
 const registerRouter = require('./routes/registerRoute');
 const loginRouter = require('./routes/loginRoute');
 const MesModel = require('./models/mesModel');
-const mesRouter = require('./routes/mesRoute');
-const auth = require('./controllers/authMiddleware')
+const mesUpdateRouter = require('./routes/mesUpdateRoute');
+const auth = require('./controllers/authMiddleware');
+const ingresosUpdateRouter = require('./routes/ingresosUpdateRoute');
+const ingresosGetRouter = require('./routes/ingresosGetRouter');
 
 
 
@@ -27,9 +28,11 @@ app.use(function (req, res, next) {
 });
 app.use('/', registerRouter);
 app.use('/', loginRouter);
-app.use('/user/home', mesRouter)
+app.use('/', ingresosGetRouter)
+app.use('/user/home', auth, mesUpdateRouter)
+app.use('/user/home', auth, ingresosUpdateRouter)
 
-app.get('/', async (req, res) => {
+app.get('/mes', async (req, res) => {
   try {
     const mes = await MesModel.find();
     res.send(mes)
@@ -37,19 +40,7 @@ app.get('/', async (req, res) => {
     res.status(500).json({ error: "Error" })
   }
 });
-
-
-
-
-
-
-app.post('/user/home/ingresos', ingresosUpdate);
-
 app.post('/user/home/gastos/:mes/:gasto', updateGasto);
-
-
-
-
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
