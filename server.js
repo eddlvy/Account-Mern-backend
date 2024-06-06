@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const connectToDb = require('./config/db');
-const updateGasto = require('./controllers/gastos');
 const registerRouter = require('./routes/registerRoute');
 const loginRouter = require('./routes/loginRoute');
 const MesModel = require('./models/mesModel');
@@ -11,6 +10,8 @@ const mesUpdateRouter = require('./routes/mesUpdateRoute');
 const auth = require('./controllers/authMiddleware');
 const ingresosUpdateRouter = require('./routes/ingresosUpdateRoute');
 const ingresosGetRouter = require('./routes/ingresosGetRouter');
+const gastosGetRouter = require('./routes/gastosGetRouter')
+const gastosUpdateRouter = require('./routes/gastosUpdateRoute')
 
 
 
@@ -31,6 +32,8 @@ app.use('/', loginRouter);
 app.use('/', ingresosGetRouter)
 app.use('/user/home', auth, mesUpdateRouter)
 app.use('/user/home', auth, ingresosUpdateRouter)
+app.use('/user/home', auth, gastosGetRouter)
+app.use('/user/home', auth, gastosUpdateRouter)
 
 app.get('/mes', async (req, res) => {
   try {
@@ -40,7 +43,6 @@ app.get('/mes', async (req, res) => {
     res.status(500).json({ error: "Error" })
   }
 });
-app.post('/user/home/gastos/:mes/:gasto', updateGasto);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
