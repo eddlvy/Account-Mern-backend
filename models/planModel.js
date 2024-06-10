@@ -2,23 +2,24 @@ const mongoose = require('mongoose');
 
 const PlanSchema = new mongoose.Schema({
 
-  renta: { type: Number },
-  gasolina: { type: Number },
-  deuda: { type: Number },
-  comida: { type: Number },
-  cuba: { type: Number },
-  electricidad: { type: Number },
-  agua: { type: Number },
-  gas: { type: Number },
-  arnona: { type: Number },
-  telefonos: { type: Number },
-  internet: { type: Number },
-  bituachleumiedua: { type: Number },
-  salud: { type: Number },
-  tarjetas: { type: Number }
+  renta: { type: Number, default: 0 },
+  gasolina: { type: Number, default: 0 },
+  deuda: { type: Number, default: 0 },
+  comida: { type: Number, default: 0 },
+  cuba: { type: Number, default: 0 },
+  electricidad: { type: Number, default: 0 },
+  agua: { type: Number, default: 0 },
+  gas: { type: Number, default: 0 },
+  arnona: { type: Number, default: 0 },
+  hot: { type: Number, default: 0 },
+  internet: { type: Number, default: 0 },
+  bl: { type: Number, default: 0 },
+  salud: { type: Number, default: 0 },
+  tarjetas: { type: Number, default: 0 },
+  otros: { type: Number, default: 0 }
 });
 
 
-const PlanModel = mongoose.model("Plan", PlanSchema);
+const PlanModel = mongoose.model("plan", PlanSchema);
 
 module.exports = PlanModel;

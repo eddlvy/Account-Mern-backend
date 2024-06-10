@@ -12,6 +12,7 @@ const ingresosUpdateRouter = require('./routes/ingresosUpdateRoute');
 const ingresosGetRouter = require('./routes/ingresosGetRouter');
 const gastosGetRouter = require('./routes/gastosGetRouter')
 const gastosUpdateRouter = require('./routes/gastosUpdateRoute')
+const PlanModel = require('./models/planModel');
 
 
 
@@ -35,10 +36,19 @@ app.use('/user/home', auth, ingresosUpdateRouter)
 app.use('/user/home', auth, gastosGetRouter)
 app.use('/user/home', auth, gastosUpdateRouter)
 
+
 app.get('/mes', async (req, res) => {
   try {
     const mes = await MesModel.find();
     return res.send(mes)
+  } catch (error) {
+    return res.status(500).json({ error: "Error" })
+  }
+});
+app.get('/plan', async (req, res) => {
+  try {
+    const plan = await PlanModel.find();
+    return res.send(plan)
   } catch (error) {
     return res.status(500).json({ error: "Error" })
   }
