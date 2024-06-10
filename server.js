@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const connectToDb = require('./config/db');
-const registerRouter = require('./routes/registerRoute');
+// const registerRouter = require('./routes/registerRoute');
 const loginRouter = require('./routes/loginRoute');
 const MesModel = require('./models/mesModel');
 const mesUpdateRouter = require('./routes/mesUpdateRoute');
@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
 
   next();
 });
-app.use('/', registerRouter);
+// app.use('/', registerRouter);
 app.use('/', loginRouter);
 app.use('/', ingresosGetRouter)
 app.use('/user/home', auth, mesUpdateRouter)
@@ -47,7 +47,7 @@ app.get('/mes', async (req, res) => {
 });
 app.get('/plan', async (req, res) => {
   try {
-    const plan = await PlanModel.find();
+    const plan = await PlanModel.find({}, { _id: 0, __v: 0 });
     return res.send(plan)
   } catch (error) {
     return res.status(500).json({ error: "Error" })
