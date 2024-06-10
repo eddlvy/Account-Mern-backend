@@ -7,15 +7,15 @@ const ingresosUpdate = async (req, res) => {
     if (!mes) {
       const ingreso = new IngresosModel(req.body);
       await ingreso.save();
-      res.send("ingreso registrado")
+      return res.send("ingreso registrado")
     } else {
       const updatedDocument = await IngresosModel.findOneAndUpdate({ mes: req.body.mes }, { $set: { total: req.body.total } }, { new: true });
-      res.send("Ingreso Actualizado")
+      return res.send("Ingreso Actualizado")
 
     }
   } catch (error) {
     console.error("Error handling request:", error);
-    res.send("Error registrando ingreso")
+    return res.send("Error registrando ingreso")
   }
 }
 

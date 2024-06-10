@@ -14,7 +14,7 @@ const GastosSchema = new mongoose.Schema({
   agua: { type: Number, default: 0 },
   gas: { type: Number, default: 0 },
   arnona: { type: Number, default: 0 },
-  hot: { type: Number },
+  hot: { type: Number, default: 0 },
   internet: { type: Number, default: 0 },
   bl: { type: Number, default: 0 },
   salud: [Number],

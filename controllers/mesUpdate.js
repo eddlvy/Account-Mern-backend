@@ -8,12 +8,12 @@ const mesUpdate = async (req, res) => {
     const mes = req.body.mes;
 
     const updatedDocument = await MesModel.findOneAndReplace({ mes: cambiar }, { mes: mes });
-    res.send("Mes Actualizado")
+    return res.send("Mes Actualizado")
 
   }
   catch (error) {
     console.error("Error handling request:", error);
-    res.send("Error registrando ingreso")
+    return res.send("Error registrando ingreso")
   }
 }
 

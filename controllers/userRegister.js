@@ -12,11 +12,11 @@ const registerUser = async (req, res) => {
       const hashedPassword = await bcrypt.hash(clave, 12);
       const user = new UserModel({ nombre, clave: hashedPassword });
       await user.save();
-      res.status(201).json({ message: "Usuario Creado" })
+      return res.status(201).json({ message: "Usuario Creado" })
     }
 
   } catch (error) {
-    res.status(500).json({ error: "Error en Registracion" })
+    return res.status(500).json({ error: "Error en Registracion" })
   }
 }
 

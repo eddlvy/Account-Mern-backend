@@ -38,9 +38,9 @@ app.use('/user/home', auth, gastosUpdateRouter)
 app.get('/mes', async (req, res) => {
   try {
     const mes = await MesModel.find();
-    res.send(mes)
+    return res.send(mes)
   } catch (error) {
-    res.status(500).json({ error: "Error" })
+    return res.status(500).json({ error: "Error" })
   }
 });
 
