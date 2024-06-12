@@ -13,6 +13,7 @@ const ingresosGetRouter = require('./routes/ingresosGetRouter');
 const gastosGetRouter = require('./routes/gastosGetRouter')
 const gastosUpdateRouter = require('./routes/gastosUpdateRoute')
 const PlanModel = require('./models/planModel');
+const planUpdateRouter = require('./routes/planUpdateRoute')
 
 
 
@@ -35,6 +36,7 @@ app.use('/user/home', auth, mesUpdateRouter)
 app.use('/user/home', auth, ingresosUpdateRouter)
 app.use('/user/home', auth, gastosGetRouter)
 app.use('/user/home', auth, gastosUpdateRouter)
+app.use('/user/plan', auth, planUpdateRouter)
 
 
 app.get('/mes', async (req, res) => {
