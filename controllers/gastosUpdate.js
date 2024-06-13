@@ -23,7 +23,6 @@ const updateGasto = async (req, res) => {
       UpdateObject.$push.concepto = req.body.concepto;
       // dinamic property
       UpdateObject.$push[gastoName] = req.body[gastoName];
-      console.log(UpdateObject)
       const updatedDocument = await GastosModel.updateOne(
         { mes: req.params.mes },
         UpdateObject,
