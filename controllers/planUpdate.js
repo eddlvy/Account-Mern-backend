@@ -7,10 +7,10 @@ const PlanUpdate = async (req, res) => {
     const updateObject = { $set: {} }
     updateObject.$set[gasto] = req.body[gasto]
     const updateDocument = await PlanModel.updateOne({}, updateObject, { new: true })
-    return res.send("Plan Updated")
+    return res.send("Plan Actualizado")
   } catch (error) {
     console.log(error);
-    return res.send("Error Updating")
+    return res.send("Error Actualizando")
   }
 }
 
