@@ -10,6 +10,7 @@ const registerUser = async (req, res) => {
       return res.json({ error: "El usuario ya existe" }).status(404)
     } else {
       const hashedPassword = await bcrypt.hash(clave, 12);
+      // creating new user document
       const user = new UserModel({ nombre, clave: hashedPassword });
       await user.save();
       return res.status(201).json({ message: "Usuario Creado" })
