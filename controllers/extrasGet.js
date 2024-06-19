@@ -5,7 +5,7 @@ const ExtrasModel = require('../models/extras');
 const extrasGet = async (req, res) => {
   try {
     const mes = req.params.mes
-    const horas = await ExtrasModel.find({ "mes": mes }, { _id: 0 });
+    const horas = await ExtrasModel.find({ "mes": mes }, { _id: 0, __v: 0 });
     return res.send(horas)
 
   } catch (error) {
