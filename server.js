@@ -14,7 +14,8 @@ const gastosGetRouter = require('./routes/gastosGetRouter')
 const gastosUpdateRouter = require('./routes/gastosUpdateRoute')
 const PlanModel = require('./models/planModel');
 const planUpdateRouter = require('./routes/planUpdateRoute')
-const historiaMesRouter = require('./routes/historiaMesRouter');
+const extrasGetRouter = require('./routes/extrasGetRouter');
+const extrasUpdateRouter = require('./routes/extrasUpdateRouter');
 const historiaRouter = require('./routes/historiaRouter');
 
 
@@ -39,7 +40,8 @@ app.use('/user/home', auth, ingresosUpdateRouter)
 app.use('/user/home', auth, gastosGetRouter)
 app.use('/user/home', auth, gastosUpdateRouter)
 app.use('/user/plan', auth, planUpdateRouter)
-app.use('/user/gastos', auth, historiaMesRouter)
+app.use('/user/extras', auth, extrasGetRouter)
+app.use('/user/extras', auth, extrasUpdateRouter)
 app.use('/user', auth, historiaRouter)
 
 
