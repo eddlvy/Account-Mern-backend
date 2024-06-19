@@ -26,7 +26,7 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(cors());
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://account-app-2d28ea94e3bf.herokuapp.com");
+  res.header("Access-Control-Allow-Origin", "https://accounteddapp.netlify.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE, OPTIONS");
 
